@@ -23,7 +23,6 @@ public class WordMapGenerator {
 
 	private void traverseParseDirectory(File folder) {
 		File[] files = folder.listFiles();
-
 		for (File f : files) {
 			if (f.getName().matches("(.*)\\.txt$")) {
 				this.parseFile(f);
@@ -34,7 +33,6 @@ public class WordMapGenerator {
 	private void parseFile(File file) {
 		try {
 			Scanner s = new Scanner(file);
-	
 			while (s.hasNextLine()) 
 				this.parseLine(s.nextLine());
 	
@@ -49,7 +47,6 @@ public class WordMapGenerator {
 		String nonDelimRe = "[A-Za-z0-9]";
 
 		while (pos < line.length()) {
-
 			while (pos < line.length() 
 				&& (""+line.charAt(pos)).matches(nonDelimRe)) {
 				pos += 1;
