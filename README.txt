@@ -1,5 +1,5 @@
-To build the project, please use Maven, only one command is necessary.
-Please issue this command from the root project directory:
+To build the project use Maven; only one command is necessary.
+Issue this command from the root project directory:
 mvn -e clean compile exec:java
 
 The web application should run on port 8080 of the host machine.
