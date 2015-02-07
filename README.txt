@@ -1,4 +1,4 @@
-To build the project use Maven; only one command is necessary.
+To build and run the project use Maven; only one command is necessary.
 Issue this command from the root project directory:
 mvn -e clean compile exec:java
 
