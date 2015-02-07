@@ -1,3 +1,8 @@
+Please create a directory called 'resources' in the project root directory:
+mkdir resources
+
+Then put all the text files you want to be processed in the resources folder.
+
 To build and run the project use Maven; only one command is necessary.
 Issue this command from the root project directory:
 mvn -e clean compile exec:java
