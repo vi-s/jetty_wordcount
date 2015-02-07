@@ -56,23 +56,27 @@ public class WordMapGenerator {
 			}
 
 			String word = line.substring(start, pos).toUpperCase();
-			if(word.length() > 1) {
-				WordStat stat = this.wordStatMap.get(word),
-						newStat;
-
-				if (stat != null) {
-					newStat = new WordStat(stat.apiCalls, stat.wordFreq + 1);
-				} else {
-					newStat = new WordStat(0, 1);
-				}
-			
-				this.wordStatMap.put(word, newStat);
-			}
+			this.processWord(word);
 
 			start = pos + 1;
 			pos = start;
 		}
 
+	}
+
+	private void processWord(String word) {
+		if(word.length() > 1) {
+			WordStat stat = this.wordStatMap.get(word),
+					newStat;
+
+			if (stat != null) {
+				newStat = new WordStat(stat.apiCalls, stat.wordFreq + 1);
+			} else {
+				newStat = new WordStat(0, 1);
+			}
+		
+			this.wordStatMap.put(word, newStat);
+		}
 	}
 
 }
