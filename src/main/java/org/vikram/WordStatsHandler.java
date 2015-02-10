@@ -12,9 +12,11 @@ import java.util.HashMap;
 
 public class WordStatsHandler extends AbstractHandler {
 	private HashMap<String, WordStat> wordStatMap;
+    private Object mutexLock;
 
 	public WordStatsHandler(HashMap<String, WordStat> map) {
 		this.wordStatMap = map;
+        this.mutexLock = new Object();
 	}
 
     public void handle(String target,
@@ -26,17 +28,25 @@ public class WordStatsHandler extends AbstractHandler {
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         String wordParam = request.getParameter("word").toUpperCase();
-        WordStat stat = this.wordStatMap.get(wordParam),
-				 newStat;
+        WordStat newStat;
 
-        if ( stat == null ) {
-        	newStat = new WordStat(1, 0);
-        } else {
-        	newStat = new WordStat(stat.apiCalls + 1, stat.wordFreq);
+        synchronized (this.mutexLock) {
+            WordStat stat = this.wordStatMap.get(wordParam);
+
+            if ( stat == null ) {
+                newStat = new WordStat(1, 0);
+            } else {
+                newStat = new WordStat(stat.apiCalls + 1, stat.wordFreq);
+            }
+
+            this.wordStatMap.put(wordParam, newStat);
         }
 
-        this.wordStatMap.put(wordParam, newStat);
-        response.getWriter().print(this.generateJsonStr(newStat));
+        if (newStat != null) {
+            response.getWriter().print(this.generateJsonStr(newStat));
+        } else {
+            response.getWriter().print("{}");    
+        }
         baseRequest.setHandled(true);
     }
 
