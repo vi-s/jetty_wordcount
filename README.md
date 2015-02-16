@@ -12,7 +12,7 @@ To provide a word to the word statistics api, please follow the format below:
 
 http://localhost:8080/wordstats/?word=wordtotest
 
-As can be seen, word signifies the name of the parameter in the url query string, and wordtotest is the value for the word parameter. The above command would fetch the api
+As can be seen, ```word``` signifies the name of the parameter in the url query string, and ```wordtotest``` is the value for the word parameter. The above command would fetch the api
 information for the word 'wordtotest'.
 
 More text files can easily be processed by simply adding them to the resources folder and restarting the web server.
