@@ -5,7 +5,7 @@ Then put all the text files you want to be processed in the resources folder.
 
 To build and run the project use Maven; only one command is necessary.
 Issue this command from the root project directory:
-mvn -e clean compile exec:java
+```mvn -e clean compile exec:java```
 
 The web application should run on port 8080 of the host machine.
 To provide a word to the word statistics api, please follow the format below:
