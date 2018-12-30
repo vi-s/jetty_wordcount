@@ -1,4 +1,4 @@
-__Sample Jetty API to process text files, and then access word statistics from a web server about the processed files.  __
+__Sample Jetty API to process text files, and then access word statistics from a web server about the processed files.__  
 
 Please create a directory called 'resources' in the project root directory:
 mkdir resources
